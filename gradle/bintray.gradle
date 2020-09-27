@@ -1,0 +1,34 @@
+
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    publish = true
+    override = true
+
+    pkg {
+        userOrg = 'sandyaraperes'
+        repo = 'maven'
+        name = project.bintray_name
+        licenses = ['Apache-2.0']
+        publications = ['mavenProject']
+
+        version {
+            name = project.version
+            released = new Date()
+            vcsTag = project.version
+
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = System.getenv('BINTRAY_PASSPHRASE')
+                //Optional. The passphrase for GPG signing'
+            }
+        }
+    }
+}
+
+bintrayUpload.doFirst {
+    publications = project.publishing.publications
+}

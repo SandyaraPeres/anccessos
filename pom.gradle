@@ -1,0 +1,33 @@
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "SandyaraPeres"
+            name 'Sandyara Peres'
+            organization 'SandyaraPeres'
+            organizationUrl 'https://github.com/SandyaraPeres/'
+        }
+    }
+
+    scm {
+        url "https://github.com/SandyaraPeres/anccessos"
+    }
+}
+
+def withPom = { pom ->
+    pom.withXml {
+        def root = asNode()
+        root.appendNode('name', project.name)
+        root.appendNode('description', 'A kotlin multiplatform library for accessibility')
+        root.appendNode('url', 'https://github.com/SandyaraPeres/anccessos')
+        root.children().last() + pomConfig
+    }
+}
+
+ext.withPom = withPom
