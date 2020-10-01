@@ -1,7 +1,7 @@
 # **anccessos**
 
 Use anccessos in your Kotlin Shared Projects to promote accessible coding for Screen Readers such as VoiceOver and TalkBack. :)
-Compatible only with Kotlin Android for now.
+Compatible only with Kotlin Android for now, this is a Work in Progress.
 
 ## How to use it
 
@@ -19,12 +19,6 @@ For now, you can set if the view's:
 Here's an example applying in my Android project:
 
 `myView.setAccessibility(className = Button::class.java, contentDescription = "Apply for this job")`
-
-## How to add in your project
-
-Add this library in your build.gradle file.  
-`implementation 'com.github.sandyaraperes:anccessos:1.0.0'`
-
  
 ## License
         
